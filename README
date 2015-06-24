@@ -1,0 +1,3 @@
+This utility is used for converting a picture into RGBA pixel matrix.
+
+Better run in a server(or local server), otherwise will cause errors like "canvas has been tainted by cross-origin data".

@@ -1,0 +1,49 @@
+<html>
+	<head>
+		<title>test for rgba iteration</title>
+	</head>
+	<body>
+		<canvas id = 'canvas'> </canvas>
+		<button id = 'btn'>get RBG pixel</button>
+	</body>
+
+</html>
+
+
+<script language="JavaScript">
+	//prepare canvas
+	var can = document.getElementById('canvas');
+	var ctx = can.getContext('2d');
+	
+	//load img
+	var img = new Image();
+	//img.src = 'test.png';
+	//img.src = 'testKeyboard.jpg';
+	img.src = 'test.jpg';
+	//img.crossOrigin = "anonymous";
+	img.onload = function () {
+		can.width = img.width;
+		can.height = img.height;
+		ctx.drawImage(img, 0, 0, img.width, img.height);
+		
+		
+		
+	}
+	
+	//
+	
+	var btn = document.getElementById('btn');
+	btn.onclick = function () {
+		var imgData = ctx.getImageData(0,0,can.width,can.height);
+		var data = imgData.data;
+		var str="";
+		for(var i=0; i<data.length; i+=4){
+			var red = data[i];
+			var green = data[i+1];
+			var blue = data[i+2];
+			var alpha = data[i+3];
+			str+=red+","+green+","+blue+","+alpha+"\n";
+		}
+		alert(str);
+	}
+</script>
